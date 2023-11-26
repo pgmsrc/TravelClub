@@ -10,7 +10,7 @@ public class ConsoleUtil {
     }
 
     public String getValueOf(String label) {
-        System.out.println(label + " : ");
+        System.out.print(label + " : ");
         String inputStr = scanner.nextLine();
         inputStr = inputStr.trim();
         return inputStr;

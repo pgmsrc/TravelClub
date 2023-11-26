@@ -12,6 +12,7 @@ public class ClubServiceLogic implements ClubService {
 
     public ClubServiceLogic() {
         this.clubs = new TravelClub[10];
+        this.index = 0;
     }
 
     @Override
@@ -27,21 +28,55 @@ public class ClubServiceLogic implements ClubService {
 
     @Override
     public TravelClub[] findByName(String clubName) {
-        return new TravelClub[0];
+        TravelClub[] creatdClubs = Arrays.copyOfRange(clubs, 0, index);
+        TravelClub[] foundClubs = new TravelClub[creatdClubs.length];
+        int subIndex = 0;
+        for (TravelClub club : creatdClubs) {
+            if (club.getClubName().equals(clubName)) {
+                foundClubs[subIndex] = club;
+                subIndex++;
+            }
+        }
+        return Arrays.copyOfRange(foundClubs, 0, subIndex);
     }
 
     @Override
     public TravelClub findByID(String clubId) {
-        return null;
+        TravelClub[] creatdClubs = Arrays.copyOfRange(clubs, 0, index);
+        TravelClub foundClub = null;
+        for (TravelClub club : creatdClubs) {
+           if (club.getId().equals(clubId)) {
+               foundClub = club;
+               break;
+           }
+        }
+        return foundClub;
     }
 
     @Override
     public void modify(TravelClub modifyClub) {
-
+        int foundIndex = 0;
+        for(int i = 0; i < clubs.length; i++) {
+            if(clubs[i].getId().equals(modifyClub.getId())) {
+                foundIndex = i;
+                break;
+            }
+        }
+        this.clubs[foundIndex] = modifyClub;
     }
 
     @Override
     public void remove(String clubId) {
-
+        int foundIndex = 0;
+        for(int i = 0; i < clubs.length; i++) {
+            if(clubs[i].getId().equals(clubId)) {
+                foundIndex = i;
+                break;
+            }
+        }
+        for(int i = foundIndex; i < this.index + 1; i++) {
+            clubs[i] = clubs[i+1];
+        }
+        this.index--;
     }
 }

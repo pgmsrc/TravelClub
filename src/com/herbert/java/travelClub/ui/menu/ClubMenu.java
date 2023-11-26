@@ -28,16 +28,16 @@ public class ClubMenu {
                     console.findAll();
                     break;
                 case 3:
-                    //
+                    console.findById();
                     break;
                 case 4:
-                    //
+                    console.findByName();
                     break;
                 case 5:
-                    //
+                    console.modify();
                     break;
                 case 6:
-                    //
+                    console.remove();
                     break;
                 case 0:
                     //
@@ -57,6 +57,7 @@ public class ClubMenu {
         System.out.println("4. Find (Name)");
         System.out.println("5. Modify");
         System.out.println("6. Remove");
+        System.out.println("----------------------------");
         System.out.println("0. Previous");
     }
 
@@ -67,7 +68,7 @@ public class ClubMenu {
             scanner.nextLine();
             return menuNumber;
         } else {
-            System.out.println("Valid Number --> " + menuNumber);
+            System.out.println("Invalid Number --> " + menuNumber);
             return -1;
         }
     }
