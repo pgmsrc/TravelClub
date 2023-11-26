@@ -16,9 +16,9 @@ public class ServiceLogicLifeCycler {
         return uniqueInstance;
     }
     public ClubService getClubService() {
-        if(clubService == null) {
-            clubService = new ClubServiceLogic();
-        }
+//        if(clubService == null) {
+//            clubService = new ClubServiceLogic();
+//        }
         return this.clubService;
     }
 }
